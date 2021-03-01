@@ -20,27 +20,26 @@ $( "#update-info" ).submit(function( event ){
     //'_9Fc.nGeJbyAHRPGMFxLhUsX5zSstZdA'
   
     for (i = 0; i < mpArray.length; i++){
-  
-      const xhr = new XMLHttpRequest();
-      const url = `https://${accountSID}:${authToken}@api.impact.com/Advertisers/${accountSID}/MediaPartners/${mpArray[i]}?MPValue1=${mpValue1}&MPValue2=${mpValue2}&MPValue3=${mpValue3}`
-  
-      console.log(url)
-  
-      const data = null
-  
-      xhr.responseType = 'json'
-      xhr.withCredentials = true;
-  
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          console.log(this.responseText);
-        }
-  
-        xhr.open('PUT', url);
-        xhr.send(data)
-      }
 
-    
+ 
+      var url = `https://${accountSID}:${authToken}@api.impact.com/Advertisers/${accountSID}/MediaPartners/${mpArray[i]}?MPValue1=${mpValue1}&MPValue2=${mpValue2}&MPValue3=${mpValue3}`
+      console.log(url)
+      
+      var data = null;
+
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+         console.log(this.responseText);
+        }
+       });
+
+    xhr.open("PUT", url);
+
+    xhr.send(data);
+   
       
     }
 
@@ -48,5 +47,8 @@ $( "#update-info" ).submit(function( event ){
     console.log(`The Form was submitted and ${mpArray.length} Partner's values have been changed. Please spot check the UI to confirm changes`)
     
 });
+
+
+
 
 
