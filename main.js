@@ -42,7 +42,7 @@ $( "#update-info" ).submit(function( event ){
    
       
     }
-    XMLHttpRequest();
+  
 
     event.preventDefault();
     console.log(`The Form was submitted and ${mpArray.length} Partner's values have been changed. Please spot check the UI to confirm changes`)
