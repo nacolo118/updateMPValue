@@ -21,12 +21,12 @@ $( "#update-info" ).submit(function( event ){
   
     for (i = 0; i < mpArray.length; i++){
   
+      const xhr = new XMLHttpRequest();
       const url = `https://${accountSID}:${authToken}@api.impact.com/Advertisers/${accountSID}/MediaPartners/${mpArray[i]}?MPValue1=${mpValue1}&MPValue2=${mpValue2}&MPValue3=${mpValue3}`
   
       console.log(url)
   
-  
-      const xhr = new XMLHttpRequest
+      const data = null
   
       xhr.responseType = 'json'
       xhr.withCredentials = true;
@@ -37,7 +37,7 @@ $( "#update-info" ).submit(function( event ){
         }
   
         xhr.open('PUT', url);
-        xhr.send()
+        xhr.send(data)
       }
 
     
